@@ -12,9 +12,9 @@ root / thoughtpolice
 
 putty remote login 
 
-update to CentOS 6.5
+update to CentOS 6.5:
 
-`yum　update`
+`yum update`
 
 install influxdb
 
@@ -42,17 +42,8 @@ add nginx， etcd & influxdb ports:
 
 ## Components
 
-**Serf**
 
-wget https://dl.bintray.com/mitchellh/serf/0.6.3_linux_amd64.zip -O  serf_0.6.3_linux_amd64.zip
-
-`unzip serf_0.6.3_linux_amd64.zip`
-
-**Consul**
-
-`wget https://dl.bintray.com/mitchellh/consul/0.4.1_linux_amd64.zip -O consul_0.4.1_linux_amd64.zip`
-
-**Etcd**
+### Etcd
 
 wget https://github.com/coreos/etcd/releases/download/v0.4.6/etcd-v0.4.6-linux-amd64.tar.gz -O etcd-v0.4.6-linux-amd64.tar.gz 
 
@@ -66,22 +57,22 @@ curl -L http://127.0.0.1:4001/v2/keys/message -XPUT -d value="Hello world"
 
 [http://192.168.147.140:4001/v2/keys/message/](http://192.168.147.140:4001/v2/keys/message/)
 
-## Node
+### Node
 
 [node-v0.11.14-linux-x64](http://nodejs.org/dist/v0.11.14/node-v0.11.14-linux-x64.tar.gz)
 
-## R
+### R
 
 yum install R
 
 
-## PostgreSQL
+### PostgreSQL
 
 [Info](http://www.postgresql.org/download/linux/redhat/)
 
 yum install http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-redhat93-9.3-1.noarch.rpm
 
-plv8
+### plv8
 
 yum install http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/plv8_93-1.4.1-1.rhel6.x86_64.rpm
 
@@ -95,12 +86,12 @@ compile plv8
 wget http://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.gz
 
 
-yum install git git-svn
+`yum install git git-svn`
 
 
 
 
-## Redis
+### Redis
 
 download, compile & install
 
@@ -127,7 +118,17 @@ install
 	cd utils
 	./inistall_server.sh
 
-## Erlang & RabbitMQ
+### Erlang & RabbitMQ
+
+yum -y install ncurses-devel
+
+yum install unixODBC
+
+configure
+
+make
+
+
 
 wget -O /etc/yum.repos.d/epel-erlang.repo http://repos.fedorapeople.org/repos/peter/erlang/epel-erlang.repo
 
@@ -137,27 +138,36 @@ http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-e
 
 
 
-## Hekad
+### Hekad
 
+[heka-0_7_2-linux-amd64.tar.gz](https://github.com/mozilla-services/heka/releases/download/v0.7.2/heka-0_7_2-linux-amd64.tar.gz)
 
-## Nginx
+### Nginx
 
 http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
 
 
-## Lua
+### Lua
 
 yum install lua
 
-## Python
+### Python
 
 defaule version: 2.6.6
 
-## Erlang
+
+### Serf
+
+wget https://dl.bintray.com/mitchellh/serf/0.6.3_linux_amd64.zip -O  serf_0.6.3_linux_amd64.zip
+
+`unzip serf_0.6.3_linux_amd64.zip`
+
+### Consul
+
+`wget https://dl.bintray.com/mitchellh/consul/0.4.1_linux_amd64.zip -O consul_0.4.1_linux_amd64.zip`
 
 
-
-# Compile & Install
+# Build
 
 - install and setup golang
 - install git
