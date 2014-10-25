@@ -26,7 +26,7 @@ cd /etc/sysconfig
 
 `vi iptables`
 
-add nginx， etcd & influxdb ports:
+add consul(8500), nginx(80)， etcd(4001) & influxdb(8083) ports:
 
 	-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT	
 	-A INPUT -m state --state NEW -m tcp -p tcp --dport 4001 -j ACCEPT	
@@ -34,11 +34,14 @@ add nginx， etcd & influxdb ports:
 	-A INPUT -m state --state NEW -m tcp -p tcp --dport 8086 -j ACCEPT	
 	-A INPUT -m state --state NEW -m tcp -p tcp --dport 8090 -j ACCEPT	
 	-A INPUT -m state --state NEW -m tcp -p tcp --dport 8099 -j ACCEPT
+	-A INPUT -m state --state NEW -m tcp -p tcp --dport 8500 -j ACCEPT
 
 /etc/init.d/iptables restart
 
 /etc/init.d/influxdb start
 
+
+**CentOS 6.4** - vmware workstation 10
 
 ## Components
 
@@ -128,14 +131,11 @@ configure
 
 make
 
-
-
 wget -O /etc/yum.repos.d/epel-erlang.repo http://repos.fedorapeople.org/repos/peter/erlang/epel-erlang.repo
 
 not work
 
 http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-erlang_17.3-1~centos~6_amd64.rpm
-
 
 
 ### Hekad
@@ -145,6 +145,12 @@ http://packages.erlang-solutions.com/site/esl/esl-erlang/FLAVOUR_1_general/esl-e
 ### Nginx
 
 http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+
+proxy port 4001,8003,8500 by 80
+
+proxy maboss(node, port 6226,62260?)
+
+
 
 
 ### Lua
